@@ -1,5 +1,4 @@
 # **alillevangbech**
-windows subsystem for linux dotfiles
 
 ## Essential installs;
 	- git
@@ -8,16 +7,6 @@ windows subsystem for linux dotfiles
 	- man
 	- tmux
 	- stow
-
-## Nice-to-have;
-	- ssh
-	- build-essential
-	- cmake
-	- python3-dev
-	- texlive-full 
-
-## Import files;
-	- stow git zsh nvim tmux
 
 ## Set zsh-default shell;
 	- cat /etc/shells;
