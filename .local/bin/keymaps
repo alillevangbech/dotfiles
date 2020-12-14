@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# script for config keymaps for xserver
+
+xset r rate 300 50

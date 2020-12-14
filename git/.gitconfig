@@ -1,0 +1,19 @@
+[user]
+	name = alillevangbech
+	email = alexanderlillevangbech@gmail.com
+
+# For the current repository
+# git config core.filemode false   
+
+# Globallyu
+# git config --global core.filemode false
+
+[core]
+	autocrlf = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+
+[mergetool]
+	prompt = false
+
