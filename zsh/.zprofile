@@ -7,3 +7,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # default programs
 export EDITOR="nvim"
+export TERM="st"
+export BROWSER="brave"
+export READER="zathura"
+
