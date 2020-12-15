@@ -1,3 +1,5 @@
-xrdb -merge .Xresources
-.local/bin/rekeymap.sh
-exec /usr/local/bin/dwm
+.local/bin/rekeymap.sh 
+.local/bin/setbg.sh 
+xcompmgr &
+unclutter &
+ssh-agent dwm

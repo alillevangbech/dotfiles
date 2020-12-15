@@ -1,5 +1,7 @@
 nvim/.config/nvim/autoload/
 nvim/.config/nvim/plugged/
 nvim/.config/nvim/.netrwhist
-scripts/.local/lib/
-scripts/.local/share/
+local/.local/lib/
+local/.local/share/
+local/.local/include/
+

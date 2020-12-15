@@ -11,7 +11,7 @@ call plug#begin(system('echo -n "$HOME/.config/nvim/plugged"'))
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 syntax on
@@ -48,3 +48,4 @@ nnoremap fg :YcmCompleter GoTo<CR>
 map <leader>a :%y+ \| <c-r>%<CR>
 map <leader>ac :%s/^\s\+//e \| <c-r>%<CR>
 
+hi Normal guibg=NONE ctermbg=NONE
