@@ -14,3 +14,7 @@ export READER="zathura"
 
 # pass variables;
 export PASSWORD_STORE_DIR=$HOME"/Sync/sharelillevang/albec/.password-store"
+
+# gpg & ssh
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
