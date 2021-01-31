@@ -3,3 +3,4 @@
 
 
 alias dir="ls -al"
+alias saxovpn="/opt/cisco/anyconnect/bin/vpn"

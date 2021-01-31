@@ -17,3 +17,5 @@
 [mergetool]
 	prompt = false
 
+[init]
+	defaultBranch = master

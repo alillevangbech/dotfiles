@@ -1,5 +1,3 @@
-let mapleader =","
-
 if ! filereadable(system('echo -n "$HOME/.config/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p $HOME/.config/nvim/autoload/
@@ -11,41 +9,62 @@ call plug#begin(system('echo -n "$HOME/.config/nvim/plugged"'))
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'dracula/vim', { 'as' : 'dracula' }
+Plug 'dense-analysis/ale'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
-syntax on
-colorscheme gruvbox
-let g:airline_theme='term'
-
-set encoding=utf-8
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-" keep lines short
-set colorcolumn=110
-highlight ColorColumn ctermbg=darkgray
-
-
-
-" Jump between files
+""" General
+let mapleader =","
+set clipboard=unnamedplus
+set autoread
 set hidden
 set path+=**
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Line numbers
-set number
 
+""" UI 
+syntax on
+colorscheme gruvbox
+set background=dark
+set nohlsearch
+set relativenumber
+hi Normal guibg=NONE ctermbg=NONE
+
+
+""" Files & Text
+set encoding=utf-8
+set expandtab
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set ai
+set si
+set nowrap
+
+
+""" Plugins 
+
+" vim airline
+"let g:airline_theme='term'
+
+" ycm stuff
+"nnoremap gd :YcmCompleter GoToDefinition<CR>
+"nnoremap gt :YcmCompleter GoTo<CR>
+"nnoremap gi :YcmCompleter GoToImplementation<CR>
+"nnoremap gr :YcmCompleter GoToReferences<CR>
+"let g:ycm_confirm_extra_conf = 0
+
+" nerdtree
+nnoremap <Leader>t :NERDTreeToggle<CR>
+let g:NERDTreeQuitOnOpen = 1
+
+""" Extras
 " Latex stuff
 autocmd VimLeave *.tex !texclear.sh %
 map <leader>p :!oopt.sh <c-r>%<CR>
 map <leader>c :w! \| !compiler.sh <c-r>%<CR>
-" c++ stuff
-map <leader>r :w! \| make && echo "\n-----------------\n" && ./run
-nnoremap fg :YcmCompleter GoTo<CR>
-
-" all to system clip
-map <leader>a :%y+ \| <c-r>%<CR>
-map <leader>ac :%s/^\s\+//e \| <c-r>%<CR>
-
-hi Normal guibg=NONE ctermbg=NONE
