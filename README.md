@@ -19,3 +19,7 @@
 	- cd $HOME/.config/nvim/plugged/YouCompleteMe/
 	- sudo apt install build-essential cmake python3-dev
 	- python3 install.py --clangd-completer
+
+## Omnisharp - arch linux
+    - install mono && mono-msbuild
+    - vim plug omnisharp etc

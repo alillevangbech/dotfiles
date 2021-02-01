@@ -15,5 +15,4 @@ export PASSWORD_STORE_DIR=$HOME"/Sync/sharelillevang/albec/.password-store"
 
 # .NET
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export PATH="$PATH:/usr/share/dotnet"
-export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/3.*/Sdks );
+export PATH="$PATH:$HOME/.dotnet/tools"
