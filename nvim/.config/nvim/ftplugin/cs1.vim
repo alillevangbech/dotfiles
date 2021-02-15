@@ -19,6 +19,6 @@ let g:OmniSharp_fzf_options = { 'down': '10' }
 nmap gd <Plug>(omnisharp_go_to_definition)
 nmap gi <Plug>(omnisharp_find_implementations)
 nmap gr <Plug>(omnisharp_find_usages)
-nmap gcc <Plug>(omnisharp_global_code_check)
+nmap ga <Plug>(omnisharp_code_actions)
 
 "autocmd BufWritePre *.cs :OmniSharpCodeFormat
