@@ -5,7 +5,7 @@
 zsh | 
 tmux |
 neovim |
-cmake |
+        cmake |
 pass |
 pulsemixer |
 pavucontrol |
