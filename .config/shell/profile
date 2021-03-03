@@ -20,6 +20,3 @@ export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
 
-# pass variables;
-export PASSWORD_STORE_DIR=$HOME"/Sync/sharelillevang/albec/.password-store"
-
