@@ -5,7 +5,7 @@
 zsh | 
 tmux |
 neovim |
-        cmake |
+cmake |
 pass |
 pulsemixer |
 pavucontrol |
@@ -13,6 +13,9 @@ syncthing |
 networkmanager |
 fzf |
 neomutt |
+curl |
+isync |
+msmtp |
 newsboat |
 man-db |
 noto-fonts-emoji |
@@ -42,6 +45,7 @@ trayer |
 yay
 brave-bin
 spotify
+urlview
 gtk-theme-arc-gruvbox-git
 
 ## GIT
