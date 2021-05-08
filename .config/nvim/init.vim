@@ -34,6 +34,9 @@ colorscheme gruvbox
 set background=dark
 set nohlsearch
 set relativenumber
+set number
+set timeoutlen=1000
+set ttimeoutlen=5
 "set signcolumn=yes
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -42,21 +45,23 @@ hi Normal guibg=NONE ctermbg=NONE
 set encoding=utf-8
 set expandtab
 set smarttab
-set tabstop=8
-set shiftwidth=8
+set tabstop=4
+set shiftwidth=4
 set ai
 set si
 set nowrap
 
 " ycm stuff
 nnoremap gd :YcmCompleter GoToDefinition<CR>
+nnoremap gi :YcmCompleter GoToDeclaration<CR>
 nnoremap gr :YcmCompleter GoToReferences<CR>
-nnoremap gt :YcmCompleter GoTo<CR>
-nnoremap gi :YcmCompleter GoToImplementation<CR>
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-
+let g:ycm_clangd_binary_path = "/usr/bin/clangd"
+let g:ycm_semantic_triggers =  {
+  \   'c,cpp,objc': [ 're!\w{3}', '_' ],
+  \ }
 
 " omnisharp / C# devel
 "let g:OmniSharp_server_stdio_quickload = 1
@@ -80,6 +85,6 @@ map <leader>p :!oopt.sh <c-r>%<CR>
 map <leader>c :w! \| !compiler.sh <c-r>%<CR>
 
 " make
-map ½½ \| :make!
+map ½½ :w! \| make && ./run <CR>
 
 

@@ -23,4 +23,5 @@ textype() { \
 
 case "$ext" in
 	tex) textype "$file" ;;
+    py) python3 "$file" ;;
 esac
