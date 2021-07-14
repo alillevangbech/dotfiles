@@ -85,6 +85,5 @@ map <leader>p :!oopt.sh <c-r>%<CR>
 map <leader>c :w! \| !compiler.sh <c-r>%<CR>
 
 " make
-map ½½ :w! \| make && ./run <CR>
-
+map ½½ :w! \| !make run<CR>
 
