@@ -1,6 +1,3 @@
-
-
-
-
 alias dir="ls -al"
 alias saxovpn="/opt/cisco/anyconnect/bin/vpn"
+alias tmux="tmux -2"

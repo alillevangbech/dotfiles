@@ -23,4 +23,4 @@ SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
 source "$XDG_CONFIG_HOME"/shell/aliasrc
-source "$HOME"/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+source "$XDG_CONFIG_HOME"/shell/profile

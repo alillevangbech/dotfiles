@@ -2,6 +2,7 @@
 # to clean up
 
 # Adds '~/.local/bin' to $PATH
+path+=('/home/albec/.dotnet/tools')
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
 
 # default programs;
