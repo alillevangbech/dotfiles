@@ -22,6 +22,10 @@ paq {'vim-airline/vim-airline'}
 paq {'vim-airline/vim-airline-themes'}
 paq {'morhetz/gruvbox'}
 paq {'savq/paq-nvim', opt = true}
+paq {'junegunn/fzf'}
+paq {'junegunn/fzf.vim'}  -- to enable preview (optional)
+paq {'ojroques/nvim-lspfuzzy'}
+   
 
 -------------------- OPTIONS -------------------------------
 cmd 'colorscheme gruvbox'
@@ -49,6 +53,8 @@ require('compe').setup {
   source = {buffer = true, path = true, nvim_lsp = true, omni = {filetypes = {'tex'}}},
 }
 
+require('lspfuzzy').setup {}
+
 -------------------- LSP -----------------------------------
 for ls, cfg in pairs({
 	pylsp = {}, clangd = {},
@@ -57,8 +63,4 @@ map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-   
-
-
-
-
+map('n', 'gq', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
