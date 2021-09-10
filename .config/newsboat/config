@@ -1,5 +1,10 @@
 auto-reload yes
 
+use-proxy yes
+proxy-auth-method ntlm
+proxy-type http
+proxy "http://localhost:8888/"
+
 bind-key j down
 bind-key k up
 bind-key j next articlelist
