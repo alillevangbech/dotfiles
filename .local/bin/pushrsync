@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -rtvzP ~/webpage/lillevang/ root@lillevang.xyz:/var/www/lillevang

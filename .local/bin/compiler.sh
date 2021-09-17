@@ -24,4 +24,5 @@ textype() { \
 case "$ext" in
 	tex) textype "$file" ;;
     py) python3 "$file" ;;
+	html) xdotool search --onlyvisible --classname Brave windowactivate --sync key F5 ;;
 esac

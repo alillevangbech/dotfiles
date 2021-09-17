@@ -22,8 +22,8 @@ end
 local Plug = fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+-- Plug 'vim-airline/vim-airline'
+-- Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
 Plug('junegunn/fzf', {['do'] = fn['fzf#install']})
 Plug 'junegunn/fzf.vim'
@@ -56,8 +56,10 @@ opt.termguicolors = true            -- True color support
 -------------------- MAPPINGS ------------------------------
 -- Make
 map('n', '<leader>b',"<cmd>w | !make<CR>")
-map('s', '<tab>',"c")
-map('n', '<tab>',"f*xi")
+map('s', '<tab>',"f*xi")
+
+map('n', '<leader>p', "<cmd>!oopt.sh %<CR>")
+map('n', '<leader>c', "<cmd>w | !compiler.sh %<CR>")
 
 -- keyboard slow
 
@@ -115,6 +117,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 for ls, cfg in pairs({
 	pylsp = {},
+	texlab = {},
 	clangd = { 
 		capabilities = capabilities,
 		on_attach = on_attach,
