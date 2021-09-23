@@ -1,7 +1,9 @@
-https://lukesmith.xyz/rss.xml "luke smith site"
+https://geohot.github.io/blog/feed.xml "persons"
 https://lukesmith.xyz/peertube "luke smith vidoes"
-https://suckless.org/atom.xml "suckless"
-https://www.archlinux.org/feeds/news/ "arch"
+https://lukesmith.xyz/rss.xml "persons"
+https://www.archlinux.org/feeds/news/ "Operating Systems"
+https://riscv.org/feed/ "Risc-V"
+http://stonetoss.com/comic/feed/ "comic"
+https://www.quantandfinancial.com/feeds/posts/default "quant"
+https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=-1099244556959721191&board=ExcelBlog&~
 https://lwn.net/headlines/rss "LWN"
-https://tools.ietf.org/html/new-rfcs.rss "rfcs news"
-
