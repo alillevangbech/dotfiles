@@ -1,6 +1,8 @@
 auto-reload yes
 
 use-proxy yes
+ssl-verifyhost no
+ssl-verifypeer no
 proxy-auth-method ntlm
 proxy-type http
 proxy "http://localhost:8888/"

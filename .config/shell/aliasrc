@@ -1,2 +1,6 @@
 alias dir="ls -al"
 alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias trylast='cd $(find . -maxdepth 1 -type d | sort -r | sed 1q)'
+alias finderror='find . -maxdepth 1 -type f | xargs grep -iE "((error)|(fatal)):"'
+alias tl="task list"
+alias ta="task add"

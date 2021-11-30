@@ -7,41 +7,44 @@ local opt = vim.opt  -- to set options
 g.mapleader = ','
 
 local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = {noremap = true}
+	if opts then options = vim.tbl_extend('force', options, opts) end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -------------------- PLUGINS -------------------------------
+
+if fn.filereadable(fn.system('echo -n "$HOME/.config/nvim/autoload/plug.vim"')) == 0 then
+	cmd "echo \"Downloading junegunn/vim-plug to manage plugins...\""
+	cmd "silent !mkdir -p $HOME/.config/nvim/autoload/"
+	cmd "silent !curl \"https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim\" > $HOME/.config/nvim/autoload/plug.vim"
+end
 local Plug = fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
-
 Plug('junegunn/fzf', {['do'] = fn['fzf#install']})
 Plug 'junegunn/fzf.vim'
-
+Plug 'tpope/vim-surround'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+Plug 'hrsh7th/cmp-path'
 Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'ojroques/nvim-lspfuzzy'
-
-
+Plug 'kabouzeid/nvim-lspinstall'
 vim.call('plug#end')
 
 -------------------- OPTIONS -------------------------------
 cmd 'colorscheme gruvbox'
 opt.completeopt = {'menuone', 'noselect'}
 opt.wildmode = {'list', 'longest'}
-opt.pumheight = 15 
+opt.pumheight = 15
 opt.number = true
 opt.hlsearch = false
 opt.hidden = true
@@ -51,6 +54,7 @@ opt.autoindent = true
 opt.wrap = false
 opt.ignorecase = true
 opt.termguicolors = true            -- True color support
+opt.clipboard = opt.clipboard + 'unnamedplus'
 
 -------------------- MAPPINGS ------------------------------
 -- Make
@@ -65,9 +69,8 @@ cmd 'command! W write'
 cmd 'command! Wq wq'
 
 -------------------- PLUGIN SETUP ---------------------------
-require 'lspfuzzy'.setup {}
-
-local luasnip = require 'luasnip'
+require 'lspinstall'.setup {}
+require 'luasnip'
 local cmp = require 'cmp'
 cmp.setup {
 	completion = {
@@ -90,6 +93,7 @@ cmp.setup {
 	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = 'buffer' },
+		{ name = 'path' },
 		{ name = 'luasnip' },
 	},
 }
@@ -112,29 +116,29 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	},
 }
 
+-- lua
+local sumneko_binary_path = vim.fn.exepath('lua-language-server')
+local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ':h:h:h')
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+-- csharp
+local pid = vim.fn.getpid()
+local omni_bin = "/home/albec/packages/omni/run"
+
 for ls, cfg in pairs({
 	pylsp = {},
-	clangd = { 
+	clangd = {
 		capabilities = capabilities,
-		on_attach = on_attach,
- 		handlers = {
- 			["textDocument/publishDiagnostics"] = vim.lsp.with(
- 			vim.lsp.diagnostic.on_publish_diagnostics, {
- 				virtual_text = false
- 			}),
- 		},
+		handlers = {
+			["textDocument/publishDiagnostics"] = vim.lsp.with(
+			vim.lsp.diagnostic.on_publish_diagnostics, {
+				virtual_text = false
+			}),
+		},
 	},
 }) do require('lspconfig')[ls].setup(cfg) end
-
-require'lsp_signature'.setup {
-	bind = true,
-	doc_lines = 5,
-	floating_window = true,
-	hint_enable = false,
-	handler_opts = {border = "single"},
-	extra_trigger_chars = {"(", ","},
-}
-
 -- Movement
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -147,6 +151,3 @@ map('n', '<C-q>', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
 map('n', '<C-a>', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', '<C-f>', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 map('n', '<C-h>', '<cmd>lua vim.lsp.buf.hover()<CR>')
-   
-
-

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cdir=$(pwd)
+day=$(basename $cdir)
+cdir=$(dirname $cdir)
+year=$(basename $cdir)
+
+if [[ ! $day > 0 && ! $day < 26 ]]
+then
+	exit 1
+fi
+
+if [[ ! $year > 2014 && ! $year < 2050 ]]
+then
+	exit 1
+fi
+
+psession=$(git rev-parse --show-toplevel)/session.txt
+curl --proxy http://localhost:8888 -b "session=$(cat $psession)" "https://adventofcode.com/$year/day/$day/input" > input.txt
+

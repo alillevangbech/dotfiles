@@ -1,2 +1,11 @@
-https://lukesmith.xyz/rss.xml "luke smith"
-https://www.archlinux.org/feeds/news/ "arch"
+https://geohot.github.io/blog/feed.xml "persons"
+https://lukesmith.xyz/rss.xml "persons"
+https://riscv.org/feed/ "Risc-V"
+http://stonetoss.com/comic/feed/ "comic"
+https://techcommunity.microsoft.com/plugins/custom/microsoft/o365/custom-blog-rss?tid=-1099244556959721191&board=ExcelBlog&label=&messages=&size=10
+https://lwn.net/headlines/rss "lwn"
+https://stackoverflow.com/jobs/feed?l=Denmark&u=Km&d=20 "job"
+https://www.clarusft.com/feed/ "trading"
+https://financial-hacker.com/feed/ "trading"
+https://isocpp.org/blog/rss/category/news "cpp"
+https://www.cppstories.com/index.xml "cpp"

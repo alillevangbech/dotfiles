@@ -25,3 +25,4 @@ export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+alias config='/usr/bin/git --git-dir=/home/albec/.cfg/ --work-tree=/home/albec'
