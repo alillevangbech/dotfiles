@@ -31,6 +31,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
@@ -42,6 +43,7 @@ vim.call('plug#end')
 cmd 'colorscheme gruvbox'
 opt.completeopt = {'menuone', 'noselect'}
 opt.wildmode = {'list', 'longest'}
+opt.clipboard = opt.clipboard + 'unnamedplus'
 opt.pumheight = 15 
 opt.number = true
 opt.hlsearch = false
@@ -93,6 +95,7 @@ cmp.setup {
 	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = 'buffer' },
+		{ name = 'path' },
 		{ name = 'luasnip' },
 	},
 }
@@ -116,8 +119,15 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 for ls, cfg in pairs({
-	pylsp = {},
-	texlab = {},
+	pyright = {
+		handlers = {
+			["textDocument/publishDiagnostics"] = vim.lsp.with(
+			vim.lsp.diagnostic.on_publish_diagnostics, {
+				virtual_text = false
+			}),
+		},
+	},
+	-- texlab = {},
 	clangd = { 
 		capabilities = capabilities,
 		on_attach = on_attach,

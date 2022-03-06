@@ -1,11 +1,5 @@
 #!/bin/bash
 
-gitname=$(basename $(git rev-parse --show-toplevel))
-
-if [[ ! "$gitname" == "aoc" ]]; then
-	exit 1
-fi
-
 cdir=$(pwd)
 day=$(basename $cdir)
 cdir=$(dirname $cdir)

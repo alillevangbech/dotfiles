@@ -12,7 +12,7 @@ export BROWSER="brave"
 export READER="zathura"
 
 # runit user level services
-export SVDIR="$HOME/service"
+export SVDIR="/run/runit/service"
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -30,3 +30,4 @@ export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+#git clone --bare <git-repo-url> $HOME/.cfg
