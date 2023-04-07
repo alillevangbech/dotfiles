@@ -35,8 +35,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
 Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
-Plug 'ray-x/lsp_signature.nvim'
 Plug 'ojroques/nvim-lspfuzzy'
+Plug 'rafamadriz/friendly-snippets'
 vim.call('plug#end')
 
 -------------------- OPTIONS -------------------------------
@@ -57,7 +57,7 @@ opt.termguicolors = true            -- True color support
 
 -------------------- MAPPINGS ------------------------------
 -- Make
-map('n', '<leader>b',"<cmd>w | !make<CR>")
+map('n', '<leader>b',"<cmd>w | !make -s<CR>")
 map('s', '<tab>',"f*xi")
 
 map('n', '<leader>p', "<cmd>!oopt.sh %<CR>")
@@ -101,6 +101,7 @@ cmp.setup {
 }
 
 -------------------- LSP -----------------------------------
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -129,6 +130,7 @@ for ls, cfg in pairs({
 	},
 	-- texlab = {},
 	clangd = { 
+		cmd = { "/home/albec/tools/llvm/bin/clangd" },
 		capabilities = capabilities,
 		on_attach = on_attach,
 		handlers = {
@@ -138,23 +140,31 @@ for ls, cfg in pairs({
 			}),
 		},
 	},
-}) do require('lspconfig')[ls].setup(cfg) end
+	gopls = {
+		cmd = {'gopls'},
+		capabilities = capabilities,
+		settings = {
+			gopls = {
+				experimentalPostfixCompletions = true,
+				analyses = {
+					unusedparams = true,
+					shadow = true,
+				},
+				staticcheck = true,
+			},
+		},
+		on_attach = on_attach,
 
-require'lsp_signature'.setup {
-	bind = true,
-	doc_lines = 5,
-	floating_window = true,
-	hint_enable = false,
-	handler_opts = {border = "single"},
-	extra_trigger_chars = {"(", ","},
-}
+	},
+}) do require('lspconfig')[ls].setup(cfg) end
 
 -- Movement
 map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-map('n', 'ge', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+map('n', 'ge', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
 -- Info
 map('n', '<C-q>', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')

@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-
 file=$(readlink -f "$1")
 dir=${file%/*}
 base="${file%.*}"
@@ -24,5 +22,5 @@ textype() { \
 case "$ext" in
 	tex) textype "$file" ;;
     py) python3 "$file" ;;
-	html) xdotool search --onlyvisible --classname Brave windowactivate --sync key F5 ;;
+	go) go run "$dir" ;;
 esac
